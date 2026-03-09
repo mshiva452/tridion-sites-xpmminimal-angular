@@ -10,10 +10,13 @@ interface PData {
 export interface TypedPage {
   title: string;
   name: string;
+  itemId:number;
+  publicationId:number;
+  itemType:number;
   regions: Region[];
 }
 
-interface Region {
+export interface Region {
   name: string;
   components: ComponentData[];
 }
@@ -24,12 +27,21 @@ export interface ComponentData {
   publicationId: string,
   itemId: string,
   headline: string;
+  content:{
+    data:{
+      $type:string;
+      headline:string;
+      content:string
+      link:Link2
+    }
+  }
   itemListElement?: ItemListElement[];
   introduction?: string;
   body?: Body[];
   link?: Link2;
   articleBody?: Body[];
   image:Media
+  media:Media
 }
 
 interface Link2 {

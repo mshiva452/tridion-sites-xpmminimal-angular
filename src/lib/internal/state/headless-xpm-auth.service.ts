@@ -100,7 +100,7 @@ export class AuthService {
 
     refreshAccessToken(): Observable<AuthResponse> {
         const authStorageData = this._authToken() as AuthResponse;
-        if (authStorageData && authStorageData!==null && !authStorageData.refresh_token) {
+        if (!authStorageData?.refresh_token) {
             throw new Error("Authentication Failed")
         }
 

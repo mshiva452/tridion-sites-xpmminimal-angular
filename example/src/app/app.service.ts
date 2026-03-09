@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable, signal } from "@angular/core";
 import { PageData } from "../types";
 import { PAGE_QUERY } from "../graphql/PageQuery";
 import { PAGE_VARIABLES } from "../graphql/PageVariables";
@@ -11,15 +10,24 @@ import { environment } from '../environments/environment';
     providedIn: 'root'
 })
 export class AppService {
-    private apiUrl = environment.apiUrl
+    private apiUrl = environment.graphqlBaseUrl;
+    pageData = signal<PageData | null>(null)
 
     constructor(private http: HttpClient) { }
 
-    getPageData(): Observable<PageData> {
+    getPageData(url: string) {
+        const pageVariables = { ...PAGE_VARIABLES }
+        if (url === "/") {
+            pageVariables.url = url + "index.html"
+        } else {
+            pageVariables.url = url + "/index.html"
+        }
         const query = {
             query: PAGE_QUERY,
-            variables: PAGE_VARIABLES
+            variables: pageVariables
         }
-        return this.http.post<PageData>(this.apiUrl, query)
+        this.http.post<PageData>(this.apiUrl, query).subscribe(res => {
+            this.pageData.set(res)
+        })
     }
 }

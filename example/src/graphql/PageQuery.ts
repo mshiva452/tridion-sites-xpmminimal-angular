@@ -6,6 +6,9 @@ export const PAGE_QUERY = `query PageQuery($namespaceId: Int!, $publicationId: I
   ) {
     title
     name
+    itemId
+    publicationId
+    itemType
     regions {
       name
       components {

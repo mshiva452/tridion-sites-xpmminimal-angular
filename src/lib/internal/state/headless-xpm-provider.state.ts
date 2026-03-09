@@ -6,7 +6,7 @@ export class HeadlessXpmProviderState {
     private readonly _editorUrl = signal<string>('');
     private readonly _staging = signal(false);
     private readonly _showToolbar = signal(false);
-    private readonly _showPageEditorLink = signal(true);
+    private readonly _showPageEditorLink = signal(false);
 
     readonly editorUrl: Signal<string> = this._editorUrl.asReadonly();
     readonly staging: Signal<boolean> = this._staging.asReadonly();

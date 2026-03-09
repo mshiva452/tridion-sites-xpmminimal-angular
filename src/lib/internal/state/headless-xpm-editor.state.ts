@@ -1,9 +1,12 @@
 import { Injectable, signal } from "@angular/core";
 
-@Injectable()
+@Injectable({
+    providedIn:"root"
+})
 
 export class HeadlessXpmEditorState {
     private readonly _tcmId = signal<string>('');
+
     private readonly _isPage = signal(false);
     private readonly _customClasses = signal<string>('');
 

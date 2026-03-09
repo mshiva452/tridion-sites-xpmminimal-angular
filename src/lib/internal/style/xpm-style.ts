@@ -48,6 +48,10 @@ export function injectHeadlessXpmStyles(isBrowser: boolean) {
 
     .headlessXpmRegion-hover:hover .headlessXpmIcon {
         opacity: 1;
-    }`;
+    }
+    .headlessXpmContent [xpm-editable-field-name]:hover {
+        border: 2px solid green;
+    }    
+    `;
     document.head.appendChild(style);
 }

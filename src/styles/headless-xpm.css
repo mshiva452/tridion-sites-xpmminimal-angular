@@ -1,3 +1,4 @@
+
 .headlessXpmRegion {
     border: 1px solid transparent;
     position: relative;
@@ -35,4 +36,9 @@
 
 .headlessXpmRegion-hover:hover .headlessXpmIcon {
     opacity: 1;
+}
+
+
+.headlessXpmContent [xpm-editable-field-name]:hover {
+    border: 2px solid green;
 }
